@@ -1,5 +1,22 @@
 # i2b2-usage-dashboard
 
+## Work in progress: Ask the Dashboard
+
+This branch adds natural-language questions to the dashboard,
+to be answered by a local LLM (Ollama) via tool calling.
+
+- The model never writes SQL. It can only call a whitelist of 8 tools
+  (`backend/Endpoints/llm_tools.py`) that wrap the existing SQL functions.
+- Relative date phrases ("last week", "past 2 weeks", "last Wednesday") are resolved in code, not by the model.
+- All tools were verified against independent SQL queries (13/13).
+- Next: LLM loop, `/api/ask` endpoint, chat panel in the frontend.
+
+Developed and tested only on synthetic demo data.
+
+This fork is maintained independently by me after my internship at BIH, where I developed the
+original dashboard ([BIH-MI/i2b2-usage-dashboard](https://github.com/BIH-MI/i2b2-usage-dashboard)).
+The Ask the Dashboard extension is my own independent work and is not affiliated with BIH or Charité.
+
 ## About the project
 
 This interactive dashboard analyzes usage metrics to provide data stewards and administrators with a comprehensive understanding of how users at their institution are interacting with the Informatics for Integrating Biology and the Bedside (i2b2) platform. This can help to identify strengths and limitations of the platform in general, as well as the current data representation supporting the local use case. It can thus serve as a communication aid for the dialog with users to identify potential areas for improvement in supporting efficient access to health data.
